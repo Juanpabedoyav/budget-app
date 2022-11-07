@@ -1,6 +1,7 @@
 <?php
-
-require_once 'classes/userSessionInstance.php';
+require 'classes/session.php';
+require_once 'models/usermodel.php';
+//require_once 'classes/userSessionInstance.php';
 /**
  * Controlador que también maneja las sesiones
  */
