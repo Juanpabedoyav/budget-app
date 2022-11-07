@@ -35,6 +35,8 @@ class App{
                                     array_push($nParam, $url[$i] + 2);
                                 }
                                 $controller->{$url[1]}($params);
+                                error_log('APP::construct-> start methods more than two params after the controller');
+                            
                             }else{
                                 error_log('APP::construct-> start methods only one params after the controller');
                                 $controller->{$url[1]}();
