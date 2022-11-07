@@ -1,64 +1,66 @@
-<?php 
-require_once './controllers/errores.php';
+<?php
+require_once 'controllers/errores.php';
 
 class App{
 
     function __construct(){
-        $url = isset($_GET['url']) ? $_GET['url'] : null;
-        $url = rtrim($url, '/');
-        $url = explode('/', $url);
-    
 
+        $url = isset($_GET['url']) ? $_GET['url']: null;
+        $url = rtrim($url, '/');
+        //var_dump($url);
+        /*
+            controlador->[0]
+            metodo->[1]
+            parameter->[2]
+        */
+        $url = explode('/', $url);
+
+        // cuando se ingresa sin definir controlador
         if(empty($url[0])){
-            error_log('APP::construct-> Dont exist controller load automatic login');
-            $fileController = "controllers/login.php";
-            require_once $fileController ;
-            $controllerLogin = new Login();
-            $controllerLogin->loadModel('login');
-            $controllerLogin->render();
+            $archivoController = 'controllers/login.php';
+            require_once $archivoController;
+            $controller = new Login();
+            $controller->loadModel('login');
+            $controller->render();
             return false;
         }
-        $fileController = "controllers/". $url[0] . ".php";
-            
-        if(file_exists($fileController)){
-            error_log('APP::construct->exist controller load '.$fileController);
+        $archivoController = 'controllers/' . $url[0] . '.php';
 
-          require_once $fileController;
-           $controller = new $url[0];
-          $controller->loadModel($url[0]);
+        if(file_exists($archivoController)){
+            require_once $archivoController;
 
+            // inicializar controlador
+            $controller = new $url[0];
+            $controller->loadModel($url[0]);
+
+            // si hay un método que se requiere cargar
             if(isset($url[1])){
                 if(method_exists($controller, $url[1])){
-                            if(isset($url[2])){
-                                $nParam = sizeof($url) - 2;
-                                $params = [];
-                                for ($i=0; $i < $nParam ; $i++) { 
-                                    array_push($nParam, $url[$i + 2]);
-                                }
-                                $controller->{$url[1]}($params);
-                                error_log('APP::construct-> start methods more than two params after the controller');
-                            
-                            }else{
-                                error_log('APP::construct-> start methods only one params after the controller');
-                                $controller->{$url[1]}();
-                            }
+                    if(isset($url[2])){
+                        //el método tiene parámetros
+                        //sacamos e # de parametros
+                        $nparam = sizeof($url) - 2;
+                        //crear un arreglo con los parametros
+                        $params = [];
+                        //iterar
+                        for($i = 0; $i < $nparam; $i++){
+                            array_push($params, $url[$i + 2]);
+                        }
+                        //pasarlos al metodo   
+                        $controller->{$url[1]}($params);
+                    }else{
+                        $controller->{$url[1]}();    
+                    }
                 }else{
-                    $controller = new Errores();
-                //errros 404 page
+                    $controller = new Errores(); 
                 }
-
             }else{
-                error_log('APP::construct->dont exist method');
                 $controller->render();
             }
         }else{
-           $controller = new Errores();
-                //errros 404 page
+            $controller = new Errores();
         }
     }
-
-
-
 }
 
 ?>
