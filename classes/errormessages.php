@@ -31,7 +31,6 @@ class ErrorMessages{
     }
 
 public function existKey($key){
-
     if(array_key_exists($key, $this->errorList)){
      return true; 
     }else{ 
