@@ -10,6 +10,10 @@
 <title>Login</title>
 </head>
 <body>
+
+<p>
+  <?php $this->showMessages();?>
+</p>
     <h1>Login</h1>
     <form action="<?php echo constant('URL'); ?>/login" method="POST">
       <div class="mb-3">
