@@ -29,10 +29,10 @@ class App{
             if(isset($url[1])){
                 if(method_exists($controller, $url[1])){
                             if(isset($url[2])){
-                                $nParam = count($url) - 2;
+                                $nParam = sizeof($url) - 2;
                                 $params = [];
                                 for ($i=0; $i < $nParam ; $i++) { 
-                                    array_push($nParam, $url[$i] + 2);
+                                    array_push($nParam, $url[$i + 2]);
                                 }
                                 $controller->{$url[1]}($params);
                                 error_log('APP::construct-> start methods more than two params after the controller');
@@ -43,7 +43,7 @@ class App{
                             }
                 }else{
                     $controller = new Errores();
-
+                //errros 404 page
                 }
 
             }else{
