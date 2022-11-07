@@ -2,6 +2,7 @@
 
 class ErrorMessages{
  //ERROR_CONTroller_methOD_ACTION
+ const PRUEBA = '202cb962ac59075b964b07152d234b7098';
     const ERROR_ADMIN_NEWCATEGORY_EXIST = '202cb962ac59075b964b07152d234b70';
     const ERROR_SIGNUP_NEWUSER = '3a3f958cc901152633d9117f908c03cd';
     const ERROR_SIGNUP_NEWUSER_EMPTY = 'aa6ecd289609bd0120bddded2ad9c33f';
@@ -14,6 +15,7 @@ class ErrorMessages{
 
     function __construct(){
        $this->errorList = [
+        ErrorMessages:: PRUEBA => 'prueba',
             ErrorMessages:: ERROR_ADMIN_NEWCATEGORY_EXIST => 'El nombre de la categoria ya existe',
             ErrorMessages:: ERROR_SIGNUP_NEWUSER => 'Hubo un error al intentar procesar la solicitud',
             ErrorMessages:: ERROR_SIGNUP_NEWUSER_EMPTY => 'Llena los campos de usuario y/o password',
