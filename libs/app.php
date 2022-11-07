@@ -53,10 +53,6 @@ class App{
                 error_log('APP::construct->dont exist method');
                 $controller->render();
             }
-
-
-
-
         }else{
            $controller = new Errores();
                 //errros 404 page
