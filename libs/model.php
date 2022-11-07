@@ -4,6 +4,8 @@
 class Model{
         function __construct(){
             $this->db = new DB();
+            error_log('Model::Construct->load Dadabase ');
+
         }
 
         function query($query){
