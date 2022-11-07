@@ -6,9 +6,14 @@ ini_set('log_errors', TRUE); // Error/Exception file logging engine.
 ini_set("error_log", "/xampp/htdocs/cursoPhp/budget-app/php-error.log");
 error_log( "start app" );
 
-
-
+require_once 'libs/db.php';
+require_once 'libs/controller.php';
+//require_once 'libs/model.php';
+//require_once 'libs/view.php';
 require_once 'libs/app.php';
+require_once 'config/config.php';
+
+
 
 $app = new App();
 ?>  
