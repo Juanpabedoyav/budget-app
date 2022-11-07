@@ -1,5 +1,4 @@
 <?php 
-require_once './controllers/errores.php';
 
 class App{
 
@@ -51,8 +50,12 @@ class App{
                 error_log('APP::construct->dont exist method');
                 $controller->render();
             }
+
+
+
+
         }else{
-           $controller = new Errores();
+          //  $controller = new Errores();
                 //errros 404 page
         }
     }
