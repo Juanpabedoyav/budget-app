@@ -15,21 +15,26 @@
   <?php $this->showMessages();?>
 </p>
     <h1>Login</h1>
-    <form action="<?php echo constant('URL'); ?>/login" method="POST">
-      <div class="mb-3">
-        <label for="username" class="form-label">User Name</label>
-        <input type="text" class="form-control" name='username' id="username" aria-describedby="emailHelp">
-      
-      </div>
-      <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input type="password" class="form-control" name='password' id="exampleInputPassword1">
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+    <form action="<?php echo constant('URL'); ?>login/authenticate" method="POST">
+        <div><?php (isset($this->errorMessage))?  $this->errorMessage : '' ?></div>
+            <h2>Iniciar sesión</h2>
 
-      <p>¿No tienes una cuenta?</p>
+            <p>
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" autocomplete="off">
+            </p>
+            <p>
+                <label for="password">password</label>
+                <input type="password" name="password" id="password" autocomplete="off">
+            </p>
+            <p>
+                <input type="submit" value="Iniciar sesión" />
+            </p>
 
-</form>
+            <p>
+                ¿No tienes cuenta? <a href="<?php echo constant('URL'); ?>signup">Registrarse</a>
+            </p>
+        </form>
 
 
 

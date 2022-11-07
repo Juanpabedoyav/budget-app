@@ -8,7 +8,6 @@ class Errores extends Controller{
     }
     function render(){
         error_log('Errores::render-> render 404');
-       
         $this->view->render('errores/index');
       }
 
