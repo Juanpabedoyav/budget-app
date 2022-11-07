@@ -1,4 +1,6 @@
-<?php 
+<?php
+
+require_once 'classes/userSessionInstance.php';
 /**
  * Controlador que también maneja las sesiones
  */
@@ -10,12 +12,18 @@ class SessionController extends Controller{
 
     private $session;
     private $sites;
+    private $defaultSites;
 
     private $user;
  
     function __construct(){
         parent::__construct();
+
         $this->init();
+
+ /*     $this->userSession = new UserSessionInstance();
+        $this->username    = $this->userSession->getUserSessionData()['username'];
+        $this->userid      = $this->userSession->getUserSessionData()['id']; */
     }
 
     public function getUserSession(){
@@ -30,7 +38,9 @@ class SessionController extends Controller{
         return $this->userid;
     }
 
-
+    /**
+     * Inicializa el parser para leer el .json
+     */
     private function init(){
         //se crea nueva sesión
         $this->session = new Session();
@@ -44,7 +54,9 @@ class SessionController extends Controller{
         // el tipo de rol y permismos
         $this->validateSession();
     }
-
+    /**
+     * Abre el archivo JSON y regresa el resultado decodificado
+     */
     private function getJSONFileConfig(){
         $string = file_get_contents("config/access.json");
         $json = json_decode($string, true);
@@ -52,9 +64,11 @@ class SessionController extends Controller{
         return $json;
     }
 
-  
+    /**
+     * Implementa el flujo de autorización
+     * para entrar a las páginas
+     */
     function validateSession(){
-        error_log('SessionController::validateSession()');
         //Si existe la sesión
         if($this->existsSession()){
             $role = $this->getUserSessionData()->getRole();
@@ -79,18 +93,19 @@ class SessionController extends Controller{
             //No existe ninguna sesión
             //se valida si el acceso es público o no
             if($this->isPublic()){
-                error_log('SessionController::validateSession() public page');
                 //la pagina es publica
                 //no pasa nada
             }else{
                 //la página no es pública
                 //redirect al login
-                error_log('SessionController::validateSession() redirect al login');
                 header('location: '. constant('URL') . '');
             }
         }
     }
-
+    /**
+     * Valida si existe sesión, 
+     * si es verdadero regresa el usuario actual
+     */
     function existsSession(){
         if(!$this->session->exists()) return false;
         if($this->session->getCurrentUser() == NULL) return false;
@@ -118,8 +133,6 @@ class SessionController extends Controller{
 
     private function isPublic(){
         $currentURL = $this->getCurrentPage();
-        error_log("sessionController::isPublic(): currentURL => " . $currentURL);
-        $currentURL = preg_replace( "/\?.*/", "", $currentURL); //omitir get info
         for($i = 0; $i < sizeof($this->sites); $i++){
             if($currentURL === $this->sites[$i]['site'] && $this->sites[$i]['access'] === 'public'){
                 return true;
@@ -153,10 +166,8 @@ class SessionController extends Controller{
     }
 
     private function getCurrentPage(){
-        
         $actual_link = trim("$_SERVER[REQUEST_URI]");
         $url = explode('/', $actual_link);
-        error_log("sessionController::getCurrentPage(): actualLink =>" . $actual_link . ", url => " . $url[2]);
         return $url[2];
     }
 
@@ -164,18 +175,15 @@ class SessionController extends Controller{
         error_log("sessionController::authorizeAccess(): role: $role");
         switch($role){
             case 'user':
-                $this->redirect($this->defaultSites['user']);
+                header('location: '. constant('URL').'dashboard');
             break;
             case 'admin':
-                $this->redirect($this->defaultSites['admin']);
+                header('location: '. constant('URL').'admin');
             break;
             default:
         }
     }
-
-    function logout(){
-        $this->session->closeSession();
-    }
 }
+
 
 ?>
