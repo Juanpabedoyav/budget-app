@@ -17,22 +17,22 @@ class Signup extends Controller{
            $username = $this->getPost('username');
            $password = $this->getPost('password');
 
-           if($username === '' || empty($username) || $password === '' || empty($password)){
-                $this->redirect('signup', ['error' => ErrorMessages:: ERROR_SIGNUP_NEWUSER_EMPTY]);
-           }
-           $user = new UserModel();
-           $user->setUsername($username);
-           $user->setPassword($password);
-           $user->setRole('user');
+                if($username === '' || empty($username) || $password === '' || empty($password)){
+                    $this->redirect('signup', ['error' => ErrorMessages:: ERROR_SIGNUP_NEWUSER_EMPTY]);
+                }
+                $user = new UserModel();
+                $user->setUsername($username);
+                $user->setPassword($password);
+                $user->setRole('user');
 
-        if($user->exist($username)){
-                 $this->redirect('signup', ['error' => ErrorMessages:: ERROR_SIGNUP_NEWUSER_EXIST]);
-        }else if($user->save()){
-                $this->redirect('', ['success' => successMessages:: SUCCESS_SINGUP_NEWUSER]);
+                    if($user->exist($username)){
+                            $this->redirect('signup', ['error' => ErrorMessages:: ERROR_SIGNUP_NEWUSER_EXIST]);
+                    }else if($user->save()){
+                            $this->redirect('', ['success' => successMessages:: SUCCESS_SINGUP_NEWUSER]);
 
-        }else{
-            $this->redirect('signup', ['error' => ErrorMessages:: ERROR_SIGNUP_NEWUSER]);
-        }
+                    }else{
+                        $this->redirect('signup', ['error' => ErrorMessages:: ERROR_SIGNUP_NEWUSER]);
+                    }
 
 
         }else{

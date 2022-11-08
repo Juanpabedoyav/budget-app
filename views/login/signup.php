@@ -9,16 +9,16 @@
     <title>Registro</title>
 </head>
 <body>
-
-<?php $this->showMessages();?>
-
-    <form  action = '<?php echo constant('URL');?>/signup/newUser' method = 'POST'>
-    <h1>Registro</h1>
-  <div class="mb-3">
-    <label for="username" class="form-label">User Name</label>
-    <input type="text" class="form-control" name="username" id="username">
   
-  </div>
+  
+  <?php $this->showMessages();?>
+  <form  action = '<?php echo constant('URL');?>/signup/newUser' method = 'POST'>
+    <h1>Registro</h1>
+    <div class="mb-3">
+      <label for="username" class="form-label">User Name</label>
+      <input type="text" class="form-control" name="username" id="username">
+      
+    </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Password</label>
     <input type="password" name="password" class="form-control" id="password">

@@ -32,7 +32,7 @@ class Login extends Controller{
             }
             // si el login es exitoso regresa solo el ID del usuario
           // sesiones validation 
-          //  $user = $this->model->login($username, $password);
+            $user = $this->model->login($username, $password);
             if($user != NULL){
             //     // inicializa el proceso de las sesiones
                 error_log('Login::authenticate() passed');    
