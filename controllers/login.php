@@ -4,11 +4,15 @@ class Login extends Controller{
 
     function __construct(){
         parent::__construct();
+    error_log('Login::construnct-> start login');
     }
 
     function render(){
+       
         $actual_link = trim("$_SERVER[REQUEST_URI]");
         $url = explode('/', $actual_link);
+    error_log('Login::render-> start render login' .$url);
+       
         $this->view->errorMessage = '';
         $this->view->render('login/index');
     }
@@ -17,6 +21,7 @@ class Login extends Controller{
         if( $this->existPOST(['username', 'password']) ){
             $username = $this->getPost('username');
             $password = $this->getPost('password');
+            error_log('Login::authenticate-> start render login' . $username);
 
             //validate data
             if($username == '' || empty($username) || $password == '' || empty($password)){

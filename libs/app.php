@@ -1,5 +1,5 @@
 <?php
-require_once 'controllers/errores.php';
+require_once './controllers/errores.php';
 
 class App{
 
