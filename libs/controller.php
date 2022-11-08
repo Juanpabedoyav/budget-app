@@ -17,6 +17,7 @@ class Controller{
             }
 
         }
+
         function existPost($params){
             foreach ($params as $param) {
                 if(!isset($_POST[$param])){
@@ -26,6 +27,7 @@ class Controller{
             }
             return true;
         }
+        
         function existGet($params){
             foreach ($params as $param) {
                 if(!isset($GET[$param])){

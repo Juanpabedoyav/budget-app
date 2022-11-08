@@ -15,13 +15,13 @@ class ErrorMessages{
 
     function __construct(){
        $this->errorList = [
-            ErrorMessages:: ERROR_ADMIN_NEWCATEGORY_EXIST => 'El nombre de la categoria ya existe',
-            ErrorMessages:: ERROR_SIGNUP_NEWUSER => 'Hubo un error al intentar procesar la solicitud',
-            ErrorMessages:: ERROR_SIGNUP_NEWUSER_EMPTY => 'Llena los campos de usuario y/o password',
-            ErrorMessages :: ERROR_SIGNUP_NEWUSER_EXIST => 'El usuario ya existe',
-            ErrorMessages :: ERROR_LOGIN_AUTHENTICATE_EMPTY => 'Llena los campos de usuario y/o password',
-            ErrorMessages :: ERROR_LOGIN_AUTHENTICATE_DATA => 'Nombre de usuario y/o password incorrecto',
-            ErrorMessages :: ERROR_LOGIN_AUTHENTICATE => 'No se puede procesar la solicitud. Ingresa usuario y password',
+        ErrorMessages:: ERROR_ADMIN_NEWCATEGORY_EXIST => 'El nombre de la categoria ya existe',
+        ErrorMessages:: ERROR_SIGNUP_NEWUSER => 'Hubo un error al intentar procesar la solicitud',
+        ErrorMessages:: ERROR_SIGNUP_NEWUSER_EMPTY => 'Llena los campos de usuario y/o password',
+        ErrorMessages :: ERROR_SIGNUP_NEWUSER_EXIST => 'El usuario ya existe',
+        ErrorMessages :: ERROR_LOGIN_AUTHENTICATE_EMPTY => 'Llena los campos de usuario y/o password',
+        ErrorMessages :: ERROR_LOGIN_AUTHENTICATE_DATA => 'Nombre de usuario y/o password incorrecto',
+        ErrorMessages :: ERROR_LOGIN_AUTHENTICATE => 'No se puede procesar la solicitud. Ingresa usuario y password',
 
         ];
    
