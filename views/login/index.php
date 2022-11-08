@@ -15,7 +15,7 @@
   <?php $this->showMessages();?>
 </p>
     <h1>Login</h1>
-    <form action="<?php echo constant('URL'); ?>login/authenticate" method="POST">
+    <form action="<?php echo constant('URL'); ?>/login/authenticate" method="POST">
         <div><?php (isset($this->errorMessage))?  $this->errorMessage : '' ?></div>
             <h2>Iniciar sesión</h2>
 
@@ -32,7 +32,7 @@
             </p>
 
             <p>
-                ¿No tienes cuenta? <a href="<?php echo constant('URL'); ?>signup">Registrarse</a>
+                ¿No tienes cuenta? <a href="<?php echo constant('URL'); ?>/signup">Registrarse</a>
             </p>
         </form>
 

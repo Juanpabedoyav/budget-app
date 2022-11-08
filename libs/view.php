@@ -11,7 +11,7 @@ class View{
         require_once 'views/' .$name. '.php';
     }
 
-    private function handleMessages(){
+    public function handleMessages(){
         if(isset($_GET['success']) && isset($_GET['error'])){
 
         }else if(isset($_GET['success'])){
@@ -22,14 +22,14 @@ class View{
 
         }
     }
-    private function handleSuccess(){
+    public function handleSuccess(){
         $hash = $_GET['success'];
         $success = new SuccessMessages();
             if($success->existKey($hash)){
                     $this->d['success'] = $success->get($hash);
             }
     }
-    private function handleError(){
+    public function handleError(){
         $hash = $_GET['error'];
         $error = new ErrorMessages();
             if($error->existKey($hash)){
