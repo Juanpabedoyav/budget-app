@@ -22,6 +22,7 @@ class Login extends Controller{
             $username = $this->getPost('username');
             $password = $this->getPost('password');
             error_log('Login::authenticate-> start render login welcome ' . $username);
+            $this->redirect('dashboard', []);
 
             //validate data
             if($username == '' || empty($username) || $password == '' || empty($password)){
@@ -40,9 +41,9 @@ class Login extends Controller{
              }else{
             //     //error al registrar, que intente de nuevo
             //     //$this->errorAtLogin('Nombre de usuario y/o password incorrecto');
-                 error_log('Login::authenticate() username and/or password wrong');
+                error_log('Login::authenticate() username and/or password wrong');
                 $this->redirect('', ['error' => ErrorMessages::ERROR_LOGIN_AUTHENTICATE_DATA]);
-                  return;
+                return;
             }
         }else{
             // error, cargar vista con errores

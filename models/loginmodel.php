@@ -19,7 +19,7 @@ class LoginModel extends Model{
 
                 $user = new UserModel();
                 $user->from($item);
-
+                //print id
                 error_log('login: user id '.$user->getId());
 
                 if(password_verify($password, $user->getPassword())){
