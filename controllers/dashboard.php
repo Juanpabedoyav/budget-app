@@ -14,7 +14,13 @@ class Dashboard extends Controller{
         $this->view->render('dashboard/index');
     }
 
-  
+    public function getExpenses(){
+
+    }
+
+    public function getCategories(){
+        
+    }
 
 }
 
