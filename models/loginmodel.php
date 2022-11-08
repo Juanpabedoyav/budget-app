@@ -1,5 +1,5 @@
 <?php 
-//require_once 'models/usermodel.php';
+require_once 'models/usermodel.php';
 class LoginModel extends Model{
 
     public function __construct(){
@@ -14,12 +14,12 @@ class LoginModel extends Model{
             $query = $this->prepare('SELECT * FROM users WHERE username = :username');
             $query->execute(['username' => $username]);
             
-            if($query->rowCount() == 1){
+            if($query->rowCount() === 1){
                 $item = $query->fetch(PDO::FETCH_ASSOC); 
 
                 $user = new UserModel();
                 $user->from($item);
-
+                //print id
                 error_log('login: user id '.$user->getId());
 
                 if(password_verify($password, $user->getPassword())){
