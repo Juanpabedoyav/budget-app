@@ -26,55 +26,51 @@ class CategoriesModel extends Model implements IModel{
     public function getColor(){ return $this->color;}
 
 
-    public function exist($name){
-        try {
-            $query = $this->prepare('SELECT name FROM categories WHERE name = :name');
-            $query->execute([
-                'name' => $name,
-            ]);
-            if($query->rowCount()) return true;
-            return false;
-        } catch (PDOExeption $e) {
-            error_log('CategoriesModel:: get -> PDOEception' . $e );
-            return false;
+        public function exist($name){
+            try {
+                $query = $this->prepare('SELECT name FROM categories WHERE name = :name');
+                $query->execute([
+                    'name' => $name,
+                ]);
+                if($query->rowCount()) return true;
+                return false;
+            } catch (PDOExeption $e) {
+                error_log('CategoriesModel:: get -> PDOEception' . $e );
+                return false;
+            }
+
         }
 
-    }
-
-    public function save(){
-        try {
-            $query = $this->prepare('INSERT INTO categories (name, color) VALUES (:name, :color)');
-            $query->execute([
-                'name' => $this->name,
-                'color' => $this->color,
-            ]);
-            if($query->rowCount()) return true;
-            return false;
-        } catch (PDOExeption $e) {
-            error_log('CategoriesModel:: save -> PDOException' . $e );
-            return false;
+        public function save(){
+            try {
+                $query = $this->prepare('INSERT INTO categories (name, color) VALUES (:name, :color)');
+                $query->execute([
+                    'name' => $this->name,
+                    'color' => $this->color,
+                ]);
+                if($query->rowCount()) return true;
+                return false;
+            } catch (PDOExeption $e) {
+                error_log('CategoriesModel:: save -> PDOException' . $e );
+                return false;
+            }
+        
         }
-       
-    }
-
-
-
-
 
         public function getAll(){
-          $items = [];
-          try {
-            $query = $this->query('SELECT * FROM categories');
-            while ($p = $query->fetch(PDO::FETCH_ASSOC)) {
-                $item = new CategoriesModel();
-                $item->array($p);
-                array_push($items, $item);
+            $items = [];
+            try {
+                $query = $this->query('SELECT * FROM categories');
+                while ($p = $query->fetch(PDO::FETCH_ASSOC)) {
+                    $item = new CategoriesModel();
+                    $item->array($p);
+                    array_push($items, $item);
+                }
+                return $items;
+            } catch (PDOExeption $e) {
+                error_log('CategoriesModel:: getAll -> PDOException' . $e );
+                return false;
             }
-            return $items;
-          } catch (PDOExeption $e) {
-            error_log('CategoriesModel:: getAll -> PDOException' . $e );
-            return false;
-          }
         }
 
         public function get($id){
