@@ -36,7 +36,7 @@ private  $name;
             ]);    
             return true;
         } catch (PDOExeption $e) {
-            error_log('USERMODEL:: save -> PDOEception' . $e );
+            error_log('USERMODEL:: save -> PDOException' . $e );
             return false;
         }
     }
@@ -84,9 +84,6 @@ private  $name;
             error_log('USERMODEL:: get -> PDOEception' . $e );
             return false;
         }
-
-
-
 
     }
     public function delete($id){
