@@ -102,7 +102,7 @@ class ExpensesModel extends Model implements IModel{
         }
         public function update(){
             try {
-                $query = $this->prepare('UPDATE expenses SET title = :title, amount = :mount, category_id = :category_id, date = :dat, id_user = :user ) WHERE id = :id');
+                $query = $this->prepare('UPDATE expenses SET title = :title, amount = :mount, category_id = :category_id, date = :dat, id_user = :user WHERE id = :id');
                 $query->execute([
                     'id' => $this->id,
                     'title' => $this->title,
