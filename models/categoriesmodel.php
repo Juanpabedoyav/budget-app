@@ -63,7 +63,7 @@ class CategoriesModel extends Model implements IModel{
                 $query = $this->query('SELECT * FROM categories');
                 while ($p = $query->fetch(PDO::FETCH_ASSOC)) {
                     $item = new CategoriesModel();
-                    $item->array($p);
+                    $item->from($p);
                     array_push($items, $item);
                 }
                 return $items;

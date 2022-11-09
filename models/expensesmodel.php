@@ -80,7 +80,7 @@ class ExpensesModel extends Model implements IModel{
                     'id' => $id,
                 ]);
                 $expenses =  $query->fetch(PDO::FETCH_ASSOC);
-                $this->form($expenses);         
+                $this->from($expenses);         
                 return $this;
             } catch (PDOExeption $e) {
                 error_log('ExpensesModel:: get -> PDOEception' . $e );
