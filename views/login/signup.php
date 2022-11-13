@@ -10,8 +10,9 @@
 </head>
 <body>
   
-  
-  <?php $this->showMessages();?>
+  <div class="message">
+    <?php $this->showMessages();?>
+  </div>
   <form  action = '<?php echo constant('URL');?>/signup/newUser' method = 'POST'>
     <h1>Registro</h1>
     <div class="mb-3">

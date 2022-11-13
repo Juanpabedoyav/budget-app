@@ -36,14 +36,14 @@ class JoinExpensesCategoriesModel extends Model{
 
     public function from($array){
 
-     $this->expenseId   = $array['expense_id'];
-    $this->title        = $array['title'];
-    $this->amount       = $array['amount'];
-    $this->categoryId   = $array['category_id'];
-    $this->date         = $array['date'];
-    $this->userId       = $array['id_user'];
-    $this->nameCategory = $array['name'];
-    $this->color        = $array['color'];
+        $this->expenseId   = $array['expense_id'];
+        $this->title        = $array['title'];
+        $this->amount       = $array['amount'];
+        $this->categoryId   = $array['category_id'];
+        $this->date         = $array['date'];
+        $this->userId       = $array['id_user'];
+        $this->nameCategory = $array['name'];
+        $this->color        = $array['color'];
 
     }
     

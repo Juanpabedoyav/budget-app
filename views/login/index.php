@@ -5,19 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    
+    <link rel="stylesheet" href="./public/index.css">
     
     <title>Login</title>
 </head>
 <body>
-    
-    <?php $this->showMessages()?>
-
+    <div class="message">
+        <?php $this->showMessages()?>
+        <?php (isset($this->errorMessage))?  $this->errorMessage : '' ?>
+    </div>
+ 
+   <h2>Iniciar sesión</h2>  
     <h1>Login</h1>
-    <form action="<?php echo constant('URL'); ?>/login/authenticate" method="POST">
-        <div><?php (isset($this->errorMessage))?  $this->errorMessage : '' ?></div>
-            <h2>Iniciar sesión</h2>
-
+    <section class = 'section-form'>
+        <form action="<?php echo constant('URL'); ?>/login/authenticate" method="POST">           
             <p>
                 <label for="username">Username</label>
                 <input type="text" name="username" id="username" autocomplete="off">
@@ -34,6 +35,7 @@
                 ¿No tienes cuenta? <a href="<?php echo constant('URL'); ?>/signup">Registrarse</a>
             </p>
         </form>
+    </section>
         <p>
 </p>
 
