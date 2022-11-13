@@ -15,20 +15,19 @@
         <?php (isset($this->errorMessage))?  $this->errorMessage : '' ?>
     </div>
  
-   <h2>Iniciar sesión</h2>  
     <h1>Login</h1>
     <section class = 'section-form'>
         <form action="<?php echo constant('URL'); ?>/login/authenticate" method="POST">           
-            <p>
-                <label for="username">Username</label>
-                <input type="text" name="username" id="username" autocomplete="off">
+            <p class="form-floating mb-3">
+                <input class="form-control" type="text" name="username" id="floatingUsername" placeholder = 'UserName' >
+                <label for="floatingUsername"  class="form-label" >Username</label>
+            </p>
+            <p class="form-floating mb-3">
+                <input class="form-control" type="password" name="password" id="floatingPassword" placeholder = 'Password'>
+                <label class="form-label" for="floatingPassword">password</label>
             </p>
             <p>
-                <label for="password">password</label>
-                <input type="password" name="password" id="password" autocomplete="off">
-            </p>
-            <p>
-                <input type="submit" value="Iniciar sesión" />
+                <input class="btn btn-primary" type="submit" value="Iniciar sesión" />
             </p>
 
             <p>
@@ -38,8 +37,6 @@
     </section>
         <p>
 </p>
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 </html>
