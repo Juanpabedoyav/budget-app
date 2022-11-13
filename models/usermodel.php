@@ -182,7 +182,7 @@ public function comparePasswords($password, $id){
     //getter
 
     public function getId(){ return $this->id; }
-    public function getUsename(){ return $this->username ;}
+    public function getUsername(){ return $this->username ;}
     public function getPassword(){ return $this->password ;}
     public function getRole(){ return $this->role ;}
     public function getBudget(){ return $this->budget;}

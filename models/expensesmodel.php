@@ -34,28 +34,24 @@ class ExpensesModel extends Model implements IModel{
     public function getDate(){ return $this->date;}
     public function getUserid(){ return $this->userid;}
 
-    public function save(){
-        
-        try {
-            $query = $this->prepare('INSERT INTO expenses (title, mount, category_id, date, id_user ) VALUES (:title, :mount, :category_id, :dat, :user)');
-            $query->execute([
-                'title' => $this->title,
-                'mount' => $this->mount,
-                'category_id' => $this->categoryid,
-                'dat' => $this->date,
-                'user' => $this->userid,
-            ]);
-            if($query->rowCount()) return true;
-            return false;
-        } catch (PDOExeption $e) {
-            error_log('ExpensesModel:: save -> PDOException' . $e );
-            return false;
+        public function save(){
+            
+            try {
+                $query = $this->prepare('INSERT INTO expenses (title, mount, category_id, date, id_user ) VALUES (:title, :mount, :category_id, :dat, :user)');
+                $query->execute([
+                    'title' => $this->title,
+                    'mount' => $this->mount,
+                    'category_id' => $this->categoryid,
+                    'dat' => $this->date,
+                    'user' => $this->userid,
+                ]);
+                if($query->rowCount()) return true;
+                return false;
+            } catch (PDOExeption $e) {
+                error_log('ExpensesModel:: save -> PDOException' . $e );
+                return false;
+            }
         }
-    }
-
-
-
-
 
         public function getAll(){
             $items = [];

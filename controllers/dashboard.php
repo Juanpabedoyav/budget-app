@@ -10,11 +10,20 @@ class Dashboard extends Controller{
     function render(){
        
          error_log('Dashboard::render-> start render Dashboard ');
-       
-        $this->view->render('dashboard/index');
+       $expensesModel = new ExpensesModel();
+       $expenses = $this->getExpenses(5); 
+   // $totalThisMonth = $expensesModel->getTotalAmountThisMonth();
+     $categories = $this->getCategories();
+       $this->view->render('dashboard/index', [
+        'expenses' => $expenses,
+        'categories' => $categories,
+
+       ]);
     }
 
-    public function getExpenses(){
+    private function getExpenses($n = 0){
+        if($n < 0) return NULL;
+        
 
     }
 
